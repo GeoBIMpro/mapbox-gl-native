@@ -101,6 +101,14 @@ namespace mbgl {
     return self;
 }
 
+- (instancetype)initWithRawLayer:(mbgl::style::SymbolLayer *)rawLayer source:(MGLSource *)source
+{
+    if (self = [super initWithIdentifier:@(rawLayer->getID().c_str()) source:source]) {
+        self.rawLayer = rawLayer;
+    }
+    return self;
+}
+
 - (mbgl::style::SymbolLayer *)rawLayer
 {
     return (mbgl::style::SymbolLayer *)super.rawLayer;

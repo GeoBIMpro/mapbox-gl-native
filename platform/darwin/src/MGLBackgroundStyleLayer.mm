@@ -33,6 +33,14 @@
     return self;
 }
 
+- (instancetype)initWithRawLayer:(mbgl::style::BackgroundLayer *)rawLayer
+{
+    if (self = [self initWithIdentifier:@(rawLayer->getID().c_str())]) {
+        self.rawLayer = rawLayer;
+    }
+    return self;
+}
+
 - (mbgl::style::BackgroundLayer *)rawLayer
 {
     return (mbgl::style::BackgroundLayer *)super.rawLayer;

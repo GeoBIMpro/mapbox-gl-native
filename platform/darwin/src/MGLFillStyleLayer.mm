@@ -42,6 +42,14 @@ namespace mbgl {
     return self;
 }
 
+- (instancetype)initWithRawLayer:(mbgl::style::FillLayer *)rawLayer source:(MGLSource *)source
+{
+    if (self = [super initWithIdentifier:@(rawLayer->getID().c_str()) source:source]) {
+        self.rawLayer = rawLayer;
+    }
+    return self;
+}
+
 - (mbgl::style::FillLayer *)rawLayer
 {
     return (mbgl::style::FillLayer *)super.rawLayer;

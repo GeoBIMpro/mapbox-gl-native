@@ -70,6 +70,14 @@ namespace mbgl {
     return self;
 }
 
+- (instancetype)initWithRawLayer:(mbgl::style::<%- camelize(type) %>Layer *)rawLayer
+{
+    if (self = [self initWithIdentifier:@(rawLayer->getID().c_str())]) {
+        self.rawLayer = rawLayer;
+    }
+    return self;
+}
+
 <% } else { -%>
 - (instancetype)initWithIdentifier:(NSString *)identifier source:(MGLSource *)source
 {
@@ -77,6 +85,14 @@ namespace mbgl {
         auto layer = std::make_unique<mbgl::style::<%- camelize(type) %>Layer>(identifier.UTF8String, source.identifier.UTF8String);
         _pendingLayer = std::move(layer);
         self.rawLayer = _pendingLayer.get();
+    }
+    return self;
+}
+
+- (instancetype)initWithRawLayer:(mbgl::style::<%- camelize(type) %>Layer *)rawLayer source:(MGLSource *)source
+{
+    if (self = [super initWithIdentifier:@(rawLayer->getID().c_str()) source:source]) {
+        self.rawLayer = rawLayer;
     }
     return self;
 }

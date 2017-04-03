@@ -1,0 +1,27 @@
+<%
+  const doc = locals.doc;
+  const type = locals.type;
+-%>
+// This file is generated.
+// Edit platform/darwin/scripts/generate-style-code.js, then run `make darwin-style-code`.
+#import "MGL<%- camelize(type) %>StyleLayer.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+namespace mbgl {
+    namespace style {
+        class <%- camelize(type) %>Layer;
+    }
+}
+
+@interface MGL<%- camelize(type) %>StyleLayer (Private)
+
+<% if (type == 'background') { -%>
+- (instancetype)initWithRawLayer:(mbgl::style::<%- camelize(type) %>Layer *)rawLayer;
+<% } else { -%>
+- (instancetype)initWithRawLayer:(mbgl::style::<%- camelize(type) %>Layer *)rawLayer source:(MGLSource *)source;
+<% } -%>
+
+@end
+
+NS_ASSUME_NONNULL_END

@@ -54,6 +54,14 @@ namespace mbgl {
     return self;
 }
 
+- (instancetype)initWithRawLayer:(mbgl::style::LineLayer *)rawLayer source:(MGLSource *)source
+{
+    if (self = [super initWithIdentifier:@(rawLayer->getID().c_str()) source:source]) {
+        self.rawLayer = rawLayer;
+    }
+    return self;
+}
+
 - (mbgl::style::LineLayer *)rawLayer
 {
     return (mbgl::style::LineLayer *)super.rawLayer;

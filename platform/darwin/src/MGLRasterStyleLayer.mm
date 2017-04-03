@@ -33,6 +33,14 @@
     return self;
 }
 
+- (instancetype)initWithRawLayer:(mbgl::style::RasterLayer *)rawLayer source:(MGLSource *)source
+{
+    if (self = [super initWithIdentifier:@(rawLayer->getID().c_str()) source:source]) {
+        self.rawLayer = rawLayer;
+    }
+    return self;
+}
+
 - (mbgl::style::RasterLayer *)rawLayer
 {
     return (mbgl::style::RasterLayer *)super.rawLayer;

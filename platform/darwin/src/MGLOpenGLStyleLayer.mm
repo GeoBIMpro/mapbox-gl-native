@@ -112,6 +112,14 @@ void MGLFinishCustomStyleLayer(void *context) {
     return self;
 }
 
+- (instancetype)initWithRawLayer:(mbgl::style::CustomLayer *)rawLayer
+{
+    if (self = [self initWithIdentifier:@(rawLayer->getID().c_str())]) {
+        self.rawLayer = rawLayer;
+    }
+    return self;
+}
+
 - (mbgl::style::CustomLayer *)rawLayer {
     return (mbgl::style::CustomLayer *)super.rawLayer;
 }
