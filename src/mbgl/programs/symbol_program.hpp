@@ -123,6 +123,7 @@ public:
     SymbolSizeData(float tileZoom, const style::DataDrivenPropertyValue<float>& size, float defaultSize_)
         : sizePropertyValue(size),
           layoutZoom(tileZoom + 1),
+          layoutSize(defaultSize_),
           defaultSize(defaultSize_) {
         size.match(
             [&] (float constantSize) { layoutSize = constantSize; },
