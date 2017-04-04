@@ -1,5 +1,9 @@
 # Changelog for Mapbox macOS SDK
 
+## 0.4.1
+
+* Renamed the "Data-Driven Styling" guide to "Using Style Functions at Runtime" and clarified the meaning of data-driven styling in the guide's discussion of runtime style functions. ([#8627](https://github.com/mapbox/mapbox-gl-native/pull/8627))
+
 ## 0.4.0
 
 This version of the Mapbox macOS SDK corresponds to version 3.5.1 of the Mapbox iOS SDK.
