@@ -43,6 +43,7 @@ public:
     // Layout
     AlignmentType pitchAlignment;
     AlignmentType rotationAlignment;
+    PossiblyEvaluatedPropertyValue<float> layoutSize;
 
     // Paint
     std::array<float, 2> translate;
